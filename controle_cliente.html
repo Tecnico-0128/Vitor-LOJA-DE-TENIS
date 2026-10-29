@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Controle de Clientes</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="topo">
+        <h1>Loja de<del></del> TÊNIS</h1>
+    </div>
+    <div class="menu">
+        <a href="controle_cliente.html"  class="ativo"> Busca_Clientes </a> | 
+        <a href="controle_estoque.html"> Estoque </a>
+        <a href="cadastrar_produto.html"> Produtos </a>
+        <a href="venda.html"> Vendas </a>
+        <a href="cadastro_cliente.html"> Clientes</a>
+    </div>
+    
+    
+    <div class="principal">
+        <div class="formulario-cliente">
+            <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-uKI_evfLLJdfhiq3sFBzxdnFCcPcLAN1TKoQQRiToQ&s=10" alt="lupa"> -->
+            <h2>Buscar Cliente</h2>      
+                <label>CPF do Cliente:</label><br>
+                <input id="cpff" type="text"><br><br>
+         <button id="buscar" onclick="listar_cliente()">Buscar Cliente</button>
+         <button id="desativar" onclick="desativar_cliente()">Desativar Cliente</button>
+        </div>
+    </div>
+    <div class="principal">
+        <div class="formulario-cliente">
+            <h2>Editar Cliente</h2>
+              
+            <label>procurar CPF:</label><br>
+            <input id="edit_cpf" type="text"><br><br>
+            <label>Nome:</label><br>
+            <input id="edit_nome" type="text"><br><br>
+            <label>Telefone:</label><br>
+            <input id="edit_telefone" type="text"><br><br>
+
+
+            <button id="atualizar" onclick="atualizar_cliente()">Atualizar Cliente</button>
+        </div>
+    </div>
+
+    <div class="principal" id="listagem_cliente"></div>
+</body>
+</html>
