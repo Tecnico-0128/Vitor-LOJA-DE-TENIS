@@ -1,4 +1,4 @@
-const nome_cliente = document.getElementById("cliente")
+                                                            const nome_cliente = document.getElementById("cliente")
 const cpf_cliente = document.getElementById("cpf")
 const telefone_cliente = document.getElementById("telefone")
 const dados = document.getElementById("lista-cliente")
@@ -49,7 +49,7 @@ async function cadastro() {
                             telefone: telefone_cliente.value
                         }
                         clientes.push(cliente)
-                        await fetch("http://localhost:3000/clientes", {
+                        await fetch("https://vitor-loja-de-tenis.onrender.com", {
                             method: "POST",
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(cliente)
@@ -307,7 +307,7 @@ function listar_compra() {
 }
 //------------------------------CLIENTES------------------------//
 async function buscar_cliente() {
-    const busca = await fetch("http://localhost:3000/clientes")
+    const busca = await fetch("https://vitor-loja-de-tenis.onrender.com")
     const dados = await busca.json()
     clientes.length = 0
     clientes.push(...dados)
@@ -315,7 +315,7 @@ async function buscar_cliente() {
 }
 buscar_cliente()
 async function editar_cliente(c) {
-    let resposta = await fetch(`http://localhost:3000/clientes/${c.id}`, {
+    let resposta = await fetch(`https://vitor-loja-de-tenis.onrender.com/${c.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(c)
@@ -326,7 +326,7 @@ async function excluir_cliente() {
     const c = await clientes.find(item => item.cpf === cpf_busca.value)
     console.log(c)
     if (c) {
-        let resposta = await fetch(`http://localhost:3000/clientes/${c.id}`, {
+        let resposta = await fetch(`http://vitor-loja-de-tenis.onrender.com/${c.id}`, {
             method: "DELETE"
         })
         buscar_cliente()
@@ -335,7 +335,7 @@ async function excluir_cliente() {
 }
 //------------------------------PRODUTOS------------------------//
 async function buscar_produto() {
-    const buscaa = await fetch("http://localhost:3000/produtos")
+    const buscaa = await fetch("https://vitor-loja-de-tenis.onrender.com")
     const dadoss = await buscaa.json()
     produtos.length = 0
     produtos.push(...dadoss)
@@ -344,7 +344,7 @@ async function buscar_produto() {
 buscar_produto()
 //------------------------------COMPRA------------------------//
 async function buscar_compra() {
-    const buscarar = await fetch("http://localhost:3000/vendas")
+    const buscarar = await fetch("https://vitor-loja-de-tenis.onrender.com")
     const dadosrr = await buscarar.json()
     compras.length = 0
     compras.push(...dadosrr)
@@ -353,7 +353,7 @@ async function buscar_compra() {
 buscar_compra()
 //------------------------------VENDAS------------------------//
 async function buscar_venda() {
-    const buscara = await fetch("http://localhost:3000/vendas")
+    const buscara = await fetch("https://vitor-loja-de-tenis.onrender.com")
     const dadosr = await buscara.json()
     vendas.length = 0
     vendas.push(...dadosr)
