@@ -1,4 +1,4 @@
-                                                            const nome_cliente = document.getElementById("cliente")
+    const nome_cliente = document.getElementById("cliente")
 const cpf_cliente = document.getElementById("cpf")
 const telefone_cliente = document.getElementById("telefone")
 const dados = document.getElementById("lista-cliente")
@@ -49,7 +49,7 @@ async function cadastro() {
                             telefone: telefone_cliente.value
                         }
                         clientes.push(cliente)
-                        await fetch("https://vitor-loja-de-tenis.onrender.com", {
+                        await fetch("https://vitor-loja-de-tenis.onrender.com/clientes", {
                             method: "POST",
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(cliente)
@@ -166,7 +166,7 @@ async function cadastro2() {
                                 tamanho: tamanho_produto.value
                             }
                             produtos.push(produto)
-                            await fetch("http://localhost:3000/produtos", {
+                            await fetch("https://vitor-loja-de-tenis.onrender.com/produtos", {
                                 method: "POST",
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify(produto)
@@ -224,13 +224,13 @@ async function vender() {
                         quantidade: quantidades_v.value
                     }
                     vendas.push(venda)
-                    await fetch("http://localhost:3000/vendas", {
+                    await fetch("https://vitor-loja-de-tenis.onrender.com/clientes", {
                         method: "POST",
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(venda)
                     })
                     produtos[i].quantidade -= quantidades_v.value;
-                    await fetch(`http://localhost:3000/produtos/${produtos[i].id}`, {
+                    await fetch(`https://vitor-loja-de-tenis.onrender.com/produtos${produtos[i].id}`, {
                         method: "PUT",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(produtos[i])
@@ -279,7 +279,7 @@ async function cadastrar_compra() {
                 }
                 guardar.quantidade += Number(quantidade_produtoss.value)
                 console.log(guardar)
-                await fetch(`http://localhost:3000/produtos/${guardar.id}`, {
+                await fetch(`https://vitor-loja-de-tenis.onrender.com/produtos${guardar.id}`, {
                     method: "PUT",
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(guardar)
@@ -307,7 +307,7 @@ function listar_compra() {
 }
 //------------------------------CLIENTES------------------------//
 async function buscar_cliente() {
-    const busca = await fetch("https://vitor-loja-de-tenis.onrender.com")
+    const busca = await fetch("https://vitor-loja-de-tenis.onrender.com/clientes")
     const dados = await busca.json()
     clientes.length = 0
     clientes.push(...dados)
@@ -315,7 +315,7 @@ async function buscar_cliente() {
 }
 buscar_cliente()
 async function editar_cliente(c) {
-    let resposta = await fetch(`https://vitor-loja-de-tenis.onrender.com/${c.id}`, {
+    let resposta = await fetch(`https://vitor-loja-de-tenis.onrender.com/clientes${c.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(c)
@@ -326,7 +326,7 @@ async function excluir_cliente() {
     const c = await clientes.find(item => item.cpf === cpf_busca.value)
     console.log(c)
     if (c) {
-        let resposta = await fetch(`http://vitor-loja-de-tenis.onrender.com/${c.id}`, {
+        let resposta = await fetch(`http://vitor-loja-de-tenis.onrender.com/clientes${c.id}`, {
             method: "DELETE"
         })
         buscar_cliente()
@@ -335,7 +335,7 @@ async function excluir_cliente() {
 }
 //------------------------------PRODUTOS------------------------//
 async function buscar_produto() {
-    const buscaa = await fetch("https://vitor-loja-de-tenis.onrender.com")
+    const buscaa = await fetch("https://vitor-loja-de-tenis.onrender.com/produtos")
     const dadoss = await buscaa.json()
     produtos.length = 0
     produtos.push(...dadoss)
@@ -344,7 +344,7 @@ async function buscar_produto() {
 buscar_produto()
 //------------------------------COMPRA------------------------//
 async function buscar_compra() {
-    const buscarar = await fetch("https://vitor-loja-de-tenis.onrender.com")
+    const buscarar = await fetch("https://vitor-loja-de-tenis.onrender.com/produtos")
     const dadosrr = await buscarar.json()
     compras.length = 0
     compras.push(...dadosrr)
@@ -353,7 +353,7 @@ async function buscar_compra() {
 buscar_compra()
 //------------------------------VENDAS------------------------//
 async function buscar_venda() {
-    const buscara = await fetch("https://vitor-loja-de-tenis.onrender.com")
+    const buscara = await fetch("https://vitor-loja-de-tenis.onrender.com/vendas")
     const dadosr = await buscara.json()
     vendas.length = 0
     vendas.push(...dadosr)

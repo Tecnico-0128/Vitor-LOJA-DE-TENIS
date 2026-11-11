@@ -3,9 +3,9 @@ import clienteRouter from './routes/clienteRouter.js'
 import produtoRouter from './routes/produtoRouter.js'
 import vendasRouter from './routes/vendasRouter.js'
 import sequelize from './config/tenisdatabase.js'
+import cors from 'cors'
 
 const app = express()
-const cors = require('cors');
 app.use(cors());
 app.use(express.json())
 
