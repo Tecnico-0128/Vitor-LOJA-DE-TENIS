@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Tecnico-0128/FINAL-UC13#readme",
   "dependencies": {
+    "cors": "^2.8.6",
     "express": "^5.3.0",
     "sequelize": "^6.37.8",
     "sqlite": "^5.1.1",
